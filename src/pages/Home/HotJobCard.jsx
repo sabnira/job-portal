@@ -26,7 +26,7 @@ const HotJobCard = ({ job }) => {
                 <h4 className="py-4">{description}</h4>
                 <div className="flex gap-2 flex-wrap">
                     {
-                        requirements.map(skill => <h4 className="border rounded-md text-center px-2 hover:text-blue-400 hover:bg-gray-700">{skill}</h4>)
+                        requirements.map((skill, index) => <h4 key={index} className="border rounded-md text-center px-2 hover:text-blue-400 hover:bg-gray-700">{skill}</h4>)
                     }
                 </div>
                 <div className="card-actions flex justify-between items-center mt-auto pt-2">

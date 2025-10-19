@@ -2,7 +2,8 @@ import logo from "../../assets/jobIcon.png"
 
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+        <div className="bg-base-300">
+        <footer className="max-w-7xl mx-auto footer sm:footer-horizontal bg-base-300 text-base-content p-10">
             <aside>
                 <img src={logo} alt="" />
                 <p>
@@ -32,6 +33,7 @@ const Footer = () => {
                 <a className="link link-hover">Cookie policy</a>
             </nav>
         </footer>
+        </div>
     );
 };
 
