@@ -6,7 +6,7 @@ const HotJobCard = ({ job }) => {
     const { _id, title, company, company_logo, requirements, description, location, salaryRange } = job;
 
     return (
-        <div className="card bg-base-300 shadow-sm">
+        <div className="card bg-base-300 shadow-sm py-4">
             <div className="flex gap-2 m-2">
                 <figure>
                     <img

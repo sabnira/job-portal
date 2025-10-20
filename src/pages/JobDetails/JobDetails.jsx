@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { MdOutlineWorkOutline, MdEmail, MdLocationOn } from "react-icons/md";
 import { FaMoneyBillWave, FaRegCalendarAlt } from "react-icons/fa";
 
@@ -6,6 +6,7 @@ const JobDetails = () => {
   const job = useLoaderData();
 
   const {
+    _id,
     title,
     company,
     company_logo,
@@ -39,9 +40,8 @@ const JobDetails = () => {
               <span className="badge badge-outline">{jobType}</span>
               <span className="badge badge-outline">{category}</span>
               <span
-                className={`badge ${
-                  status === "active" ? "badge-success" : "badge-error"
-                }`}
+                className={`badge ${status === "active" ? "badge-success" : "badge-error"
+                  }`}
               >
                 {status}
               </span>
@@ -120,7 +120,9 @@ const JobDetails = () => {
               {new Date(applicationDeadline).toLocaleDateString()}
             </span>
           </p>
-          <button className="btn btn-primary">Apply Now</button>
+          <Link to={`/jobApply/${_id}`}>
+            <button className="btn btn-primary">Apply Now</button>
+          </Link>
         </div>
       </div>
     </div>
