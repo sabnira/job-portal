@@ -1,9 +1,11 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddJob = () => {
 
-    const {user} = useAuth();
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
     const handleAddJob = e => {
         e.preventDefault();
@@ -35,6 +37,7 @@ const AddJob = () => {
                         text: "Job has been added.",
                         icon: "success"
                     });
+                    navigate('/myPostedJobs');
                 }
             })
     }
@@ -117,12 +120,12 @@ const AddJob = () => {
 
                 <div>
                     <label className="label">HR Name</label>
-                    <input type="text" defaultValue={user.email} name="hr_name" className="input input-bordered w-full" placeholder="Farhan Rahman" />
+                    <input type="text"  name="hr_name" className="input input-bordered w-full" placeholder="Farhan Rahman" />
                 </div>
 
                 <div>
                     <label className="label">HR Email</label>
-                    <input type="email" name="hr_email" className="input input-bordered w-full" placeholder="hr@techsolutions.com" />
+                    <input type="email" defaultValue={user.email} name="hr_email" className="input input-bordered w-full" placeholder="hr@techsolutions.com" />
                 </div>
 
                 <div>
