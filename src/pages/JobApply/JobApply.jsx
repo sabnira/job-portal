@@ -2,14 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-
 const JobApply = () => {
-
     const { id } = useParams();
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const submitJobApplication = e => {
+    const submitJobApplication = (e) => {
         e.preventDefault();
         const form = e.target;
         const linkedin = form.linkedin.value;
@@ -21,49 +19,81 @@ const JobApply = () => {
             applicant_email: user.email,
             linkedin,
             github,
-            resume
-        }
+            resume,
+        };
 
-        fetch('http://localhost:3000/job-applications', {
-            method: 'POST',
+        fetch("http://localhost:3000/job-applications", {
+            method: "POST",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(jobApplication)
+            body: JSON.stringify(jobApplication),
         })
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: "Successful!",
                         text: "You applied for the job!",
-                        icon: "success"
+                        icon: "success",
                     });
-                    navigate('/myApplications')
+                    navigate("/myApplications");
                 }
-            })
-    }
+            });
+    };
 
     return (
+        <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+            <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-lg p-8">
+                <div className="card-body space-y-6">
+                    <h1 className="text-4xl font-bold text-center text-primary">
+                        Apply for Job
+                    </h1>
+                    <p className="text-center text-gray-500">
+                        Fill out the form below to submit your application.
+                    </p>
 
-        <div className="card bg-base-100 w-6/12 mx-auto max-w-sm  shadow-2xl my-10">
-            <div className="card-body space-y-2">
-                <h1 className="text-5xl font-bold text-center">Apply Job and Good Luck!</h1>
-                <form onSubmit={submitJobApplication} className="form-control">
-                    <label className="label">LinkedIn URL</label>
-                    <input type="url" name="linkedin" className="input" placeholder="LinkedIn URL" />
+                    <form onSubmit={submitJobApplication} className="space-y-4">
+                        <div className="form-control">
+                            <label className="label font-semibold">LinkedIn URL</label>
+                            <input
+                                type="url"
+                                name="linkedin"
+                                placeholder="https://www.linkedin.com/in/username"
+                                className="input input-bordered w-full"
+                                required
+                            />
+                        </div>
 
-                    <label className="label">Github URL</label>
-                    <input type="url" name="github" className="input" placeholder="Github URL" />
+                        <div className="form-control">
+                            <label className="label font-semibold">GitHub URL</label>
+                            <input
+                                type="url"
+                                name="github"
+                                placeholder="https://github.com/username"
+                                className="input input-bordered w-full"
+                                required
+                            />
+                        </div>
 
-                    <label className="label">Resume URL</label>
-                    <input type="url" name="resume" className="input" placeholder="Resume URL" />
+                        <div className="form-control">
+                            <label className="label font-semibold">Resume URL</label>
+                            <input
+                                type="url"
+                                name="resume"
+                                placeholder="https://example.com/resume.pdf"
+                                className="input input-bordered w-full"
+                                required
+                            />
+                        </div>
 
-                    <button className="btn btn-neutral mt-4">Apply</button>
-                </form>
+                        <button className="btn btn-primary w-full mt-2">
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-
     );
 };
 

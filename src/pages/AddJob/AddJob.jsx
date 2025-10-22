@@ -120,7 +120,7 @@ const AddJob = () => {
 
                 <div>
                     <label className="label">HR Name</label>
-                    <input type="text"  name="hr_name" className="input input-bordered w-full" placeholder="Farhan Rahman" />
+                    <input type="text" name="hr_name" className="input input-bordered w-full" placeholder="Farhan Rahman" />
                 </div>
 
                 <div>
