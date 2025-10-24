@@ -2,24 +2,30 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { FaBriefcase, FaMapMarkerAlt, FaFileAlt, FaMoneyBillWave } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MyApplication = () => {
     const { user } = useAuth();
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        if (user?.email) {
-            fetch(`http://localhost:3000/job-applications?email=${user.email}`)
-                .then((res) => res.json())
-                .then((data) => setJobs(data));
-        }
+        // if (user?.email) {
+        //     fetch(`http://localhost:3000/job-applications?email=${user.email}`)
+        //         .then((res) => res.json())
+        //         .then((data) => setJobs(data));
+        // }
+
+
+        axios.get(`http://localhost:3000/job-applications?email=${user.email}`, {withCredentials: true})
+        .then(res => setJobs(res.data))
+
     }, [user?.email]);
 
     return (
         <div className="max-w-6xl mx-auto p-6">
-            {/* Header */}
+            
             <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-primary">
+                <h2 className="text-3xl font-bold">
                     My Job Applications
                 </h2>
                 <span className="badge badge-lg badge-secondary font-semibold">
@@ -27,7 +33,7 @@ const MyApplication = () => {
                 </span>
             </div>
 
-            {/* Empty state */}
+         
             {jobs.length === 0 ? (
                 <div className="text-center py-20">
                     <p className="text-lg text-gray-500">

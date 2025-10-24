@@ -46,7 +46,7 @@ const JobApply = () => {
         <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
             <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-lg p-8">
                 <div className="card-body space-y-6">
-                    <h1 className="text-4xl font-bold text-center text-primary">
+                    <h1 className="text-4xl font-bold text-center ">
                         Apply for Job
                     </h1>
                     <p className="text-center text-gray-500">

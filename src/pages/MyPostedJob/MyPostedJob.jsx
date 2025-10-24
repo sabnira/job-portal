@@ -19,7 +19,7 @@ const MyPostedJob = () => {
         <div className="max-w-6xl mx-auto p-6">
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-primary">
+                <h2 className="text-3xl font-bold">
                     My Posted Jobs
                 </h2>
                 <span className="badge badge-lg badge-secondary font-semibold">

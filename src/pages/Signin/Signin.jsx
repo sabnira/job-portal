@@ -3,6 +3,7 @@ import signinLottieData from "../../assets/lottie/Login.json"
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const Signin = () => {
@@ -27,6 +28,14 @@ const Signin = () => {
         signInUser(email, password)
             .then(result => {
                 console.log('sign in',result.user);
+
+                const user = {email: result.user.email}
+
+                axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data);
+                })
+
                 navigate(from);
             })
             .catch(error => {

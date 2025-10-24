@@ -1,8 +1,33 @@
 import { useLoaderData } from "react-router-dom";
 import { FaEnvelope, FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ViewApplication = () => {
     const applications = useLoaderData();
+
+    const handleStatusUpdate = (e, id) => {
+        console.log(e.target.value, id);
+        const data = {
+            status: e.target.value
+        }
+        fetch(`http://localhost:3000/job-applications/${id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        title: "Status has been updated",
+                        icon: "success",
+                    });
+                  
+                }
+            })
+    }
 
     return (
         <div className="max-w-6xl mx-auto p-6">
@@ -33,6 +58,7 @@ const ViewApplication = () => {
                                 <th>LinkedIn</th>
                                 <th>GitHub</th>
                                 <th>Resume</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,6 +101,17 @@ const ViewApplication = () => {
                                             <FaFileAlt />
                                             View Resume
                                         </a>
+                                    </td>
+                                    <td>
+                                        <select
+                                            onChange={(e) => handleStatusUpdate(e, app._id)}
+                                            defaultValue={app.status || 'Change Status'} className="select select-xs">
+                                            <option disabled>Change Status</option>
+                                            <option>Under Review</option>
+                                            <option>Set Interview</option>
+                                            <option>Hired</option>
+                                            <option>Rejected</option>
+                                        </select>
                                     </td>
                                 </tr>
                             ))}
