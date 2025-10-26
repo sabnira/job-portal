@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { FaBriefcase, FaMapMarkerAlt, FaFileAlt, FaMoneyBillWave } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyApplication = () => {
     const { user } = useAuth();
     const [jobs, setJobs] = useState([]);
+
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         // if (user?.email) {
@@ -16,10 +19,15 @@ const MyApplication = () => {
         // }
 
 
-        axios.get(`http://localhost:3000/job-applications?email=${user.email}`, {withCredentials: true})
+
+        // axios.get(`http://localhost:3000/job-applications?email=${user.email}`, {withCredentials: true})
+        // .then(res => setJobs(res.data))
+
+
+        axiosSecure.get(`/job-applications?email=${user.email}`)
         .then(res => setJobs(res.data))
 
-    }, [user?.email]);
+    }, [axiosSecure, user?.email]);
 
     return (
         <div className="max-w-6xl mx-auto p-6">
