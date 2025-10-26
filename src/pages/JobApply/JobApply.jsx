@@ -22,7 +22,7 @@ const JobApply = () => {
             resume,
         };
 
-        fetch("http://localhost:3000/job-applications", {
+        fetch("https://job-portal-server-nine-iota.vercel.app/job-applications", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

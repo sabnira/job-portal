@@ -1,16 +1,18 @@
-# React + Vite
+# JobPortalX
+[Live Site](https://project-f5cc8.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JobPortalX is a secure and user-friendly web application that connects job seekers and recruiters. It allows recruiters to post jobs and track applications, while job seekers can apply and view their applications with ease.
 
-Currently, two official plugins are available:
+## Features
+- **Add Job Listings:** Recruiters can post new job opportunities easily.  
+- **View Posted Jobs:** Recruiters can see all jobs they have posted.  
+- **Application Tracking:** Recruiters can view applications and see who applied for their jobs.  
+- **Job Seeker Dashboard:** Users can view their submitted applications and track status.  
+- **Secure Authentication:** Sign up and login with JWT-based authentication ensures security.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+- Frontend: React.js  
+- Backend: Node.js, Express.js  
+- Database: MongoDB  
+- Authentication: JWT  
+- Styling: Tailwind CSS  

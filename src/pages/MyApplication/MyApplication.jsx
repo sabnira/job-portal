@@ -13,14 +13,14 @@ const MyApplication = () => {
 
     useEffect(() => {
         // if (user?.email) {
-        //     fetch(`http://localhost:3000/job-applications?email=${user.email}`)
+        //     fetch(`https://job-portal-server-nine-iota.vercel.app/job-applications?email=${user.email}`)
         //         .then((res) => res.json())
         //         .then((data) => setJobs(data));
         // }
 
 
 
-        // axios.get(`http://localhost:3000/job-applications?email=${user.email}`, {withCredentials: true})
+        // axios.get(`https://job-portal-server-nine-iota.vercel.app/job-applications?email=${user.email}`, {withCredentials: true})
         // .then(res => setJobs(res.data))
 
 
