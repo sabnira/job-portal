@@ -10,6 +10,7 @@ import MyApplication from "../pages/MyApplication/MyApplication";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJob from "../pages/MyPostedJob/MyPostedJob";
 import ViewApplication from "../pages/ViewApplication/ViewApplication";
+import AllJob from "../pages/AllJob/AllJob";
 
 
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <MainLayout></MainLayout>,
         errorElement: <h2>Route not found</h2>,
         children: [
+            {
+                path: '/jobs',
+                element: <AllJob></AllJob>
+            },
             {
                 path: '/',
                 element: <Home></Home>
